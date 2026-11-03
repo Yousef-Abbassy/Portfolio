@@ -368,11 +368,11 @@ section{padding:104px 0;}
 .section-paper2{background:var(--paper-2); color:var(--text);}
 
 .section-head{
-  display:flex; justify-content:space-between; align-items:flex-end;
-  gap:32px; margin-bottom:52px; flex-wrap:wrap;
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:12px; margin-bottom:52px;
 }
 .section-head h2{font-size:clamp(26px,3vw,36px);}
-.section-head p{color:var(--ink-dim); max-width:44ch; font-size:15.5px;}
+.section-head p{color:var(--ink-dim); max-width:56ch; font-size:15.5px;}
 .section-light .section-head p, .section-paper2 .section-head p{color:var(--text-dim);}
 
 .reveal{
@@ -566,6 +566,27 @@ section{padding:104px 0;}
 }
 .copy-feedback.show{opacity:1; transform:translateY(0);}
 
+
+/* ---- project 1 gallery (3 dashboard pages) ---- */
+.project-thumb.gallery{height:auto; aspect-ratio:16/9; background:#D5DAE6;}
+.project-thumb.gallery .g-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; transition:opacity .7s ease, transform .5s cubic-bezier(.2,.7,.2,1);}
+.project-thumb.gallery .g-img.active{opacity:1;}
+.g-label{position:absolute; left:12px; top:12px; z-index:3; font-family:var(--font-mono); font-size:11px; color:#fff; background:rgba(10,14,22,0.78); padding:5px 9px; border-radius:5px; backdrop-filter:blur(4px);}
+.g-dots{position:absolute; left:0; right:0; bottom:10px; z-index:3; display:flex; justify-content:center; gap:8px;}
+.g-dots button{width:9px; height:9px; padding:0; border-radius:50%; border:1px solid rgba(255,255,255,0.85); background:rgba(10,14,22,0.55); transition:background .2s ease, transform .2s ease;}
+.g-dots button.active{background:var(--accent); border-color:var(--accent); transform:scale(1.25);}
+.project-download{display:flex; align-items:center; gap:10px; padding:13px 26px; border-top:1px solid var(--line); background:var(--bg-alt); color:var(--ink-dim); text-decoration:none; font-size:14px; font-weight:500; transition:background .2s ease, color .2s ease, gap .2s ease;}
+.project-download svg{width:17px; height:17px; flex-shrink:0;}
+.project-download:hover{background:var(--surface-2); color:var(--ink); gap:13px;}
+.project-download .arrow{margin-left:auto; opacity:.6;}
+.cs-shots{display:flex; flex-direction:column; gap:14px; margin-bottom:26px;}
+.cs-shots figure{margin:0;}
+.cs-shots a{display:block; border:1px solid var(--line-strong); border-radius:8px; overflow:hidden;}
+.cs-shots img{width:100%; height:auto; display:block; transition:transform .4s ease;}
+.cs-shots a:hover img{transform:scale(1.015);}
+.cs-shots figcaption{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+.cs-section .num-hl{color:var(--ink); font-weight:600;}
+
 /* ============ MODAL / CASE STUDY ============ */
 .cs-overlay{
   position:fixed; inset:0; background:rgba(6,9,14,0.72);
@@ -711,540 +732,6 @@ section{padding:104px 0;}
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
   border-top:1px solid var(--line); padding-top:22px; font-size:13px;
 }
-
-/* =========================================================
-   RESPONSIVE / MOBILE-FIRST OVERRIDES
-   Optimized for phones, tablets, iPads and small laptops.
-   ========================================================= */
-
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  min-width: 320px;
-  overflow-x: hidden;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-img,
-svg,
-canvas,
-video {
-  max-width: 100%;
-}
-
-.container {
-  width: 100%;
-}
-
-/* Prevent long words/URLs from forcing horizontal scrolling */
-h1, h2, h3, h4, p, a, span, div {
-  overflow-wrap: anywhere;
-}
-
-/* ---------- Large tablets / iPad landscape ---------- */
-@media (max-width: 1100px) {
-  :root {
-    --container: 100%;
-  }
-
-  .container {
-    padding-left: 28px;
-    padding-right: 28px;
-  }
-
-  .nav-links {
-    gap: 22px;
-  }
-
-  .hero .container {
-    gap: 40px;
-  }
-
-  .about-grid {
-    gap: 44px;
-  }
-
-  .skills-wrap {
-    gap: 32px;
-  }
-
-  .project-body {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-}
-
-/* ---------- Tablets / iPad portrait ---------- */
-@media (max-width: 920px) {
-  .site-header {
-    height: 72px;
-  }
-
-  .nav {
-    height: 72px;
-  }
-
-  .nav-links {
-    width: 100%;
-    max-width: 420px;
-    padding: 24px 24px 32px;
-    box-shadow: -20px 0 50px rgba(0,0,0,.22);
-  }
-
-  .hero .container {
-    grid-template-columns: 1fr;
-    max-width: 760px;
-  }
-
-  .hero-copy {
-    max-width: 680px;
-  }
-
-  .hero-visual {
-    width: min(100%, 560px);
-    margin: 0 auto;
-  }
-
-  .photo-frame {
-    max-height: 680px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .why-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* ---------- Phones ---------- */
-@media (max-width: 640px) {
-  .container {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  section {
-    padding: 58px 0;
-  }
-
-  .site-header,
-  .nav {
-    height: 64px;
-  }
-
-  .nav-links {
-    top: 64px;
-    max-width: none;
-    height: calc(100dvh - 64px);
-    padding: 18px 20px 28px;
-  }
-
-  .nav-brand {
-    font-size: 17px;
-  }
-
-  .nav-cta {
-    gap: 8px;
-  }
-
-  .nav-toggle {
-    width: 42px;
-    height: 42px;
-  }
-
-  .hero {
-    padding: 52px 0 68px;
-  }
-
-  .hero .container {
-    gap: 38px;
-  }
-
-  .hero h1 {
-    max-width: none;
-    font-size: clamp(32px, 10vw, 44px);
-    line-height: 1.08;
-  }
-
-  .hero .name-line {
-    font-size: 16px;
-  }
-
-  .hero-lead {
-    font-size: 16px;
-    line-height: 1.65;
-  }
-
-  .hero-actions,
-  .contact-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions .btn,
-  .contact-actions .btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 46px;
-  }
-
-  .hero-social {
-    margin-top: 28px;
-    gap: 10px;
-  }
-
-  .social-icon {
-    width: 42px;
-    height: 42px;
-  }
-
-  .hero-visual {
-    width: 100%;
-  }
-
-  .photo-frame {
-    aspect-ratio: 4 / 5;
-    max-height: none;
-  }
-
-  .floating-badge {
-    left: 10px;
-    right: 10px;
-    bottom: -16px;
-    max-width: none;
-    justify-content: flex-start;
-    font-size: 10.5px;
-    line-height: 1.4;
-  }
-
-  .section-head {
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 34px;
-  }
-
-  .section-head h2 {
-    font-size: clamp(26px, 8vw, 34px);
-  }
-
-  .section-head p {
-    font-size: 14.5px;
-  }
-
-  .about-grid {
-    gap: 32px;
-  }
-
-  .about-copy p {
-    font-size: 15px;
-  }
-
-  .strength-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .services-grid,
-  .projects-grid,
-  .why-grid,
-  .ed-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    padding: 26px 22px;
-  }
-
-  .skills-wrap {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .skill-item {
-    min-height: 46px;
-  }
-
-  .project-thumb {
-    height: auto;
-    aspect-ratio: 16 / 10;
-  }
-
-  .project-body {
-    padding: 22px 20px;
-  }
-
-  .project-body h3 {
-    font-size: 18px;
-  }
-
-  .project-meta {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .project-actions {
-    flex-direction: column;
-  }
-
-  .project-actions .btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-  }
-
-  .project-github-bar {
-    padding: 14px 20px;
-  }
-
-  .timeline {
-    max-width: none;
-  }
-
-  .tl-item {
-    padding-left: 32px;
-    padding-bottom: 32px;
-  }
-
-  .freelance-note {
-    margin-top: 34px;
-    padding: 20px;
-  }
-
-  .ed-card {
-    padding: 22px 20px;
-  }
-
-  .cert-row {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 6px;
-    padding: 14px 16px;
-  }
-
-  .why-card {
-    padding: 24px 20px;
-  }
-
-  .why-extra {
-    margin-top: 28px;
-    gap: 12px 20px;
-  }
-
-  .learning-chips {
-    gap: 8px;
-  }
-
-  .chip {
-    font-size: 12px;
-    padding: 7px 11px;
-  }
-
-  .contact-band {
-    border-radius: 10px;
-    padding: 40px 22px;
-  }
-
-  .contact-band h2 {
-    max-width: none;
-    font-size: clamp(27px, 8vw, 36px);
-  }
-
-  .contact-band .lead {
-    font-size: 15.5px;
-  }
-
-  .contact-methods {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .contact-methods div a,
-  .contact-methods div span {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-
-  .footer-top,
-  .footer-bottom {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .footer-social {
-    flex-wrap: wrap;
-  }
-
-  /* Case-study modal becomes a true mobile sheet */
-  .cs-overlay {
-    padding: 12px;
-    align-items: flex-start;
-  }
-
-  .cs-modal {
-    width: 100%;
-    max-width: none;
-    max-height: calc(100dvh - 24px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 12px;
-  }
-
-  .cs-head {
-    padding: 22px 54px 18px 20px;
-  }
-
-  .cs-head h3 {
-    font-size: 20px;
-  }
-
-  .cs-body {
-    padding: 22px 20px 28px;
-  }
-
-  .cs-section p,
-  .cs-section li {
-    font-size: 14px;
-  }
-
-  .cs-close {
-    top: 14px;
-    right: 14px;
-    width: 38px;
-    height: 38px;
-  }
-
-  .cs-links {
-    flex-direction: column;
-  }
-
-  .cs-links .btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-  }
-}
-
-/* ---------- Very small phones ---------- */
-@media (max-width: 390px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .nav-brand {
-    font-size: 16px;
-  }
-
-  .hero {
-    padding-top: 44px;
-  }
-
-  .hero h1 {
-    font-size: clamp(30px, 10vw, 38px);
-  }
-
-  .hero-kicker {
-    font-size: 11.5px;
-  }
-
-  .hero-lead {
-    font-size: 15px;
-  }
-
-  .service-card,
-  .why-card {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .project-body {
-    padding-left: 17px;
-    padding-right: 17px;
-  }
-
-  .contact-band {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-}
-
-/* ---------- Landscape phones ---------- */
-@media (max-width: 900px) and (orientation: landscape) {
-  .nav-links {
-    overflow-y: auto;
-  }
-
-  .hero {
-    padding-top: 42px;
-    padding-bottom: 54px;
-  }
-
-  .photo-frame {
-    max-height: 520px;
-  }
-}
-
-/* ---------- Touch devices: remove hover-only transforms ---------- */
-@media (hover: none), (pointer: coarse) {
-  .btn:hover,
-  .project-card:hover,
-  .project-card:hover .project-thumb img,
-  .project-github-bar:hover {
-    transform: none;
-  }
-
-  .project-card:hover {
-    box-shadow: none;
-  }
-
-  .project-thumb img {
-    transform: none !important;
-  }
-}
-
-/* ---------- Safe areas for modern phones ---------- */
-@supports (padding: max(0px)) {
-  .site-header .container {
-    padding-left: max(18px, env(safe-area-inset-left));
-    padding-right: max(18px, env(safe-area-inset-right));
-  }
-
-  .site-footer {
-    padding-bottom: max(30px, env(safe-area-inset-bottom));
-  }
-
-  .cs-overlay {
-    padding-top: max(12px, env(safe-area-inset-top));
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-}
-
-/* Avoid accidental horizontal overflow from decorative elements */
-.hero,
-section,
-.contact-band,
-.site-footer {
-  max-width: 100%;
-}
-
 </style>
 </head>
 <body>
@@ -1448,24 +935,29 @@ section,
       <div class="projects-grid reveal reveal-scale">
 
         <article class="project-card tilt-card">
-          <div class="project-thumb">
-            <img src="assets/project-1-excel-dashboard.png" alt="Excel dashboard screenshot for the retail sales analysis project" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
-            <div class="thumb-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              <span>Add dashboard screenshot</span>
-            </div>
+          <div class="project-thumb gallery" data-gallery>
+            <img class="g-img active" data-name="Cover Page" src="./pics/project-1-cover.png" alt="Cover page of the Superstore Sales Dashboard with navigation to the Executive, Product and Shipping pages" loading="lazy">
+            <img class="g-img" data-name="Executive Analysis" src="./pics/project-1-executive.png" alt="Executive Analysis page of the Superstore Power BI dashboard: total sales, profit, YoY growth, sales by region and segment" loading="lazy">
+            <img class="g-img" data-name="Product Analysis" src="./pics/project-1-product.png" alt="Product Analysis page: sales and profit margin by sub-category, profitability categories and sales by category" loading="lazy">
+            <img class="g-img" data-name="Shipping Analysis" src="./pics/project-1-shipping.png" alt="Shipping Analysis page: late vs on-time shipments, average delay by ship mode and shipping speed split" loading="lazy">
+            <span class="g-label" data-gallery-label>Cover Page</span>
           </div>
           <div class="project-body">
-            <h3>[Project Title — Excel Sales Analysis]</h3>
-            <p class="desc">Analysis of retail sales data to surface trends and reporting-ready summaries using Excel.</p>
+            <h3>Superstore Sales Performance Dashboard</h3>
+            <p class="desc">A three-page Power BI report on 4 years of retail orders: executive KPIs, product profitability and shipping performance.</p>
             <div class="project-meta">
-              <div><strong>Tools</strong>Excel, Pivot Tables</div>
-              <div><strong>Focus</strong>Reporting &amp; Dashboards</div>
+              <div><strong>Tools</strong>Power BI, Excel</div>
+              <div><strong>Focus</strong>Sales, Product &amp; Shipping</div>
             </div>
             <div class="project-actions">
               <button class="btn btn-primary btn-sm" data-open-modal="m1">View Case Study</button>
             </div>
           </div>
+          <a class="project-download" href="./PBI/Superstore-Sales-Dashboard.pbix" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>
+            Download Power BI file (.pbix)
+            <span class="arrow">↓</span>
+          </a>
           <a class="project-github-bar" href="https://github.com/Yousef-Abbassy" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
             View on GitHub
@@ -1474,24 +966,31 @@ section,
         </article>
 
         <article class="project-card tilt-card">
-          <div class="project-thumb">
-            <img src="assets/project-2-sql-dashboard.png" alt="Screenshot of query results for the SQL database analysis project" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
-            <div class="thumb-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/></svg>
-              <span>Add dashboard screenshot</span>
-            </div>
+          <div class="project-thumb gallery" data-gallery>
+            <img class="g-img active" data-name="Cover Page" src="./pics/project-2-cover.png" alt="Cover page of the Global Country Comparison dashboard with navigation buttons to five topic pages" loading="lazy">
+            <img class="g-img" data-name="Executive Overview" src="./pics/project-2-executive.png" alt="Executive Overview page: total population, average GDP by country and region, population by region and a GDP-ranked country table" loading="lazy">
+            <img class="g-img" data-name="Health Analysis" src="./pics/project-2-health.png" alt="Health Analysis page: life expectancy, birth and death rates, HIV rates and infant mortality by country" loading="lazy">
+            <img class="g-img" data-name="Economic Performance" src="./pics/project-2-economic.png" alt="Economic Performance page: GDP growth ranking, inflation, exports vs imports and trade balance by country" loading="lazy">
+            <img class="g-img" data-name="Energy Analysis" src="./pics/project-2-energy.png" alt="Energy Analysis page: oil and gas production, reserves and electricity by region and country" loading="lazy">
+            <img class="g-img" data-name="Infrastructure &amp; Connectivity" src="./pics/project-2-infrastructure.png" alt="Infrastructure and Connectivity page: internet users, mobile phones, highways and railways by region and country" loading="lazy">
+            <span class="g-label" data-gallery-label>Cover Page</span>
           </div>
           <div class="project-body">
-            <h3>[Project Title — SQL Database Analysis]</h3>
-            <p class="desc">Querying a relational database to answer specific business questions using SQL.</p>
+            <h3>Global Country Comparison Dashboard</h3>
+            <p class="desc">An 8-page Power BI report comparing about 260 countries on economy, health, energy and infrastructure, with drill-through to country details.</p>
             <div class="project-meta">
-              <div><strong>Tools</strong>SQL, MySQL</div>
-              <div><strong>Focus</strong>Data Querying</div>
+              <div><strong>Tools</strong>Power BI, Excel</div>
+              <div><strong>Focus</strong>Economy, Health, Energy &amp; Infrastructure</div>
             </div>
             <div class="project-actions">
               <button class="btn btn-primary btn-sm" data-open-modal="m2">View Case Study</button>
             </div>
           </div>
+          <a class="project-download" href="./PBI/Global-Country-Dashboard.pbix" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>
+            Download Power BI file (.pbix)
+            <span class="arrow">↓</span>
+          </a>
           <a class="project-github-bar" href="https://github.com/Yousef-Abbassy" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
             View on GitHub
@@ -1500,50 +999,26 @@ section,
         </article>
 
         <article class="project-card tilt-card">
-          <div class="project-thumb">
-            <img src="assets/project-3-python-dashboard.png" alt="Chart output from the Python and Pandas data cleaning project" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
-            <div class="thumb-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m8 3-5 9 5 9M16 3l5 9-5 9"/></svg>
-              <span>Add dashboard screenshot</span>
-            </div>
+          <div class="project-thumb gallery" data-gallery>
+            <img class="g-img active" data-name="Tableau dashboard" src="./pics/project-3-hr-dashboard.png" alt="HR Analytics Tableau dashboard: employee count, attrition rate, attrition by department, age group, gender and education field, and job satisfaction by role" loading="lazy">
+            <span class="g-label" data-gallery-label>Tableau dashboard</span>
           </div>
           <div class="project-body">
-            <h3>[Project Title — Python Data Cleaning &amp; Analysis]</h3>
-            <p class="desc">Cleaning and exploring a messy dataset with Python and Pandas to prepare it for analysis.</p>
+            <h3>HR Analytics Dashboard (Tableau)</h3>
+            <p class="desc">A Tableau dashboard on 1,470 employee records that shows who leaves, in which department, age group and role, and how satisfied employees are.</p>
             <div class="project-meta">
-              <div><strong>Tools</strong>Python, Pandas</div>
-              <div><strong>Focus</strong>Data Cleaning</div>
+              <div><strong>Tools</strong>Tableau, Excel</div>
+              <div><strong>Focus</strong>HR &amp; Employee Attrition</div>
             </div>
             <div class="project-actions">
               <button class="btn btn-primary btn-sm" data-open-modal="m3">View Case Study</button>
             </div>
           </div>
-          <a class="project-github-bar" href="https://github.com/Yousef-Abbassy" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-            View on GitHub
-            <span class="arrow">→</span>
+          <a class="project-download" href="./TB/HR-Analytics-Dashboard.twbx" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/></svg>
+            Download Tableau workbook (.twbx)
+            <span class="arrow">↓</span>
           </a>
-        </article>
-
-        <article class="project-card tilt-card">
-          <div class="project-thumb">
-            <img src="assets/project-4-powerbi-dashboard.png" alt="Power BI KPI dashboard screenshot" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
-            <div class="thumb-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="7" height="16"/><rect x="14" y="9" width="7" height="11"/></svg>
-              <span>Add dashboard screenshot</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <h3>[Project Title — Power BI KPI Dashboard]</h3>
-            <p class="desc">An interactive dashboard turning raw business data into KPIs stakeholders can act on.</p>
-            <div class="project-meta">
-              <div><strong>Tools</strong>Power BI</div>
-              <div><strong>Focus</strong>Dashboarding</div>
-            </div>
-            <div class="project-actions">
-              <button class="btn btn-primary btn-sm" data-open-modal="m4">View Case Study</button>
-            </div>
-          </div>
           <a class="project-github-bar" href="https://github.com/Yousef-Abbassy" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15v3.19c0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
             View on GitHub
@@ -1601,8 +1076,6 @@ section,
           <div class="date">[feb 2025] — [aug 2025]</div>
         </div>
       </div>
-
-      
     </div>
   </section>
 
@@ -1684,7 +1157,10 @@ section,
           <div><strong>WHATSAPP</strong><a href="https://wa.me/201020157084" target="_blank" rel="noopener noreferrer">010 2015 7084</a><a href="https://wa.me/201289501925" target="_blank" rel="noopener noreferrer">012 8950 1925</a></div>
           <div><strong>LINKEDIN</strong><a href="https://www.linkedin.com/in/yousef-ayman-32a956330?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">View Profile</a></div>
           <div><strong>GITHUB</strong><a href="https://github.com/Yousef-Abbassy" target="_blank" rel="noopener noreferrer">View Profile</a></div>
-          <div><strong>RESUME</strong><a href="./pdf/resume.pdf" download>Download PDF</a></div>
+          <div><strong>RESUME</strong><a href="resume.pdf" download>Download PDF</a></div>
+          <div><strong>UPWORK</strong><a href="https://www.upwork.com/freelancers/~015c429f3692db55d0?mp_source=share" target="_blank" rel="noopener noreferrer">View Profile</a></div>
+          <div><strong>NAFEZLY</strong><a href="https://nafezly.com/u/Yousef_abbasy" target="_blank" rel="noopener noreferrer">View Profile</a></div>
+          <div><strong>KHAMSAT</strong><a href="https://khamsat.com/user/yousefabbassy" target="_blank" rel="noopener noreferrer">View Profile</a></div>
         </div>
       </div>
     </div>
@@ -1740,12 +1216,7 @@ section,
       H = canvas.height = window.innerHeight;
     }
     function initParticles(){
-      const mobile = window.innerWidth <= 640;
-       const tablet = window.innerWidth <= 920;
-       const maxCount = mobile ? 55 : (tablet ? 80 : 130);
-       const minCount = mobile ? 24 : (tablet ? 32 : 45);
-       const areaFactor = mobile ? 26000 : (tablet ? 21000 : 15000);
-       const count = Math.min(maxCount, Math.max(minCount, Math.round((W * H) / areaFactor)));
+      const count = Math.min(130, Math.max(45, Math.round((W * H) / 15000)));
       particles = Array.from({length: count}, function(){
         return {
           x: Math.random() * W,
@@ -1822,31 +1293,15 @@ section,
   // Mobile nav
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('primary-nav');
-  function setNav(open){
-    navLinks.classList.toggle('open', open);
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-
   navToggle.addEventListener('click', function(){
-    setNav(!navLinks.classList.contains('open'));
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   navLinks.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
-      setNav(false);
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && navLinks.classList.contains('open')){
-      setNav(false);
-      navToggle.focus();
-    }
-  });
-
-  window.addEventListener('resize', function(){
-    if(window.innerWidth > 920 && navLinks.classList.contains('open')){
-      setNav(false);
-    }
   });
 
   // Reveal on scroll, with a staggered delay for grid children
@@ -1900,7 +1355,7 @@ section,
 
   // Subtle 3D tilt on project cards (pointer devices only, respects reduced motion)
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!prefersReduced && window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+  if(!prefersReduced && window.matchMedia('(hover: hover)').matches){
     document.querySelectorAll('.tilt-card').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         const rect = card.getBoundingClientRect();
@@ -1938,71 +1393,129 @@ section,
     setTimeout(function(){ heroVisual.setAttribute('data-anim','ready'); }, 150);
   });
 
+  // Project gallery (dashboard pages): dots + gentle auto-rotate
+  document.querySelectorAll('[data-gallery]').forEach(function(g){
+    const imgs = g.querySelectorAll('.g-img');
+    const label = g.querySelector('[data-gallery-label]');
+    if(imgs.length < 2){ if(label) label.textContent = imgs[0].getAttribute('data-name') || ''; return; }
+    let dotsWrap = g.querySelector('.g-dots');
+    if(!dotsWrap){ dotsWrap = document.createElement('div'); dotsWrap.className = 'g-dots'; g.appendChild(dotsWrap); }
+    dotsWrap.innerHTML = '';
+    const dots = [];
+    imgs.forEach(function(im, k){
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Show ' + (im.getAttribute('data-name') || ('page ' + (k + 1))));
+      d.addEventListener('click', function(){ show(k); start(); });
+      dotsWrap.appendChild(d); dots.push(d);
+    });
+    let i = 0, timer = null;
+    function show(n){
+      i = (n + imgs.length) % imgs.length;
+      imgs.forEach(function(im, k){ im.classList.toggle('active', k === i); });
+      dots.forEach(function(d, k){ d.classList.toggle('active', k === i); });
+      if(label) label.textContent = imgs[i].getAttribute('data-name') || '';
+    }
+    function start(){ stop(); if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ timer = setInterval(function(){ show(i + 1); }, 4200); } }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    g.addEventListener('mouseenter', stop);
+    g.addEventListener('mouseleave', start);
+    show(0); start();
+  });
+
   // Case study data
   const cases = {
     m1: {
-      title: "[Project Title — Excel Sales Analysis]",
-      desc: "Analysis of retail sales data to surface trends and reporting-ready summaries using Excel.",
-      sections: [
-        ["Overview", "A short introduction to the dataset and what the analysis set out to answer."],
-        ["The Challenge", "[Describe the real business/data problem this project addressed.]"],
-        ["My Approach", "[Explain the analysis process used to work through the problem.]"],
-        ["Data Preparation", "[Explain how the raw data was cleaned and prepared before analysis.]"],
-        ["Analysis", "[Explain the key analytical steps — formulas, pivot tables, calculations.]"],
-        ["Visualization", "[Explain the charts, tables, or Excel dashboard built from the data.]"],
-        ["Key Insights", ["[Insight one]", "[Insight two]", "[Insight three]"]],
-        ["Outcome", "[Describe the real outcome or insight, without invented figures.]"],
-        ["Tools", "Excel, Pivot Tables, Formulas"]
+      title: "Superstore Sales Performance Dashboard",
+      desc: "A three-page Power BI report built on the public Sample Superstore dataset (9,994 order lines, 5,009 orders, 793 customers, 2016–2019).",
+      images: [
+        ["./pics/project-1-cover.png", "Cover Page"],
+        ["./pics/project-1-executive.png", "Page 1 — Executive Analysis"],
+        ["./pics/project-1-product.png", "Page 2 — Product Analysis"],
+        ["./pics/project-1-shipping.png", "Page 3 — Shipping Analysis"]
       ],
-      links: [["GitHub","[GitHub Project URL]"]]
+      sections: [
+        ["Overview", "This is a practice project on a well-known sample dataset, not client work. The goal was to take a flat Excel table of orders and turn it into a report a manager could actually use: how is the business doing, which products make or lose money, and how well do orders ship."],
+        ["The Challenge", "Raw order lines don't answer business questions on their own. I needed one report that covers overall performance, product profitability and delivery speed, while staying easy to filter by year, month, region, segment and state."],
+        ["My Approach", "I split the report into three pages, one per question: Executive Analysis (the big picture), Product Analysis (what earns and what leaks margin) and Shipping Analysis (how fast and how reliably orders ship). Each page opens with KPI cards and slicers, followed by the charts that explain them."],
+        ["Data Preparation", "The source is an Excel workbook with Orders, People and Returns sheets. For the report I derived the fields the questions needed: shipping delay (ship date minus order date), a shipping-speed bucket (same/next day, fast 2–3 days, standard, slow 6+ days), profit margin %, a profitability category per order (loss, low, medium, high) and year/month fields for the time filters."],
+        ["Analysis", "Core measures: total sales, total profit, profit margin %, order count, running total of sales, year-over-year growth %, average sales per product, average shipping delay and the late vs on-time shipment split. I then re-checked the dashboard totals against the raw Excel data, and ran extra checks on discounts that the report doesn't show yet."],
+        ["Visualization", "Executive page: KPI cards, yearly sales with a running total, YoY growth line, sales by region and orders by segment, with year, month and state filters. Product page: a sub-category table with sales, profit and margin, plus profitability and category splits. Shipping page: late/on-time %, average delay by year and by ship mode, and the shipping-speed mix."],
+        ["Key Insights", [
+          "Overall: $2.30M in sales and $286K in profit across 5,009 orders, a 12.5% profit margin.",
+          "Growth was uneven: sales dipped 2.8% in 2017, then grew 29.5% in 2018 and 20.4% in 2019 (from $484K in 2016 to $733K in 2019).",
+          "The West is the strongest region ($725K, 14.9% margin). The Central region brings in 21.8% of sales but only a 7.9% margin, the lowest of the four.",
+          "Furniture is 32.3% of sales but earns just a 2.5% margin, versus 17.4% for Technology and 17.0% for Office Supplies.",
+          "Three sub-categories lose money: Tables (-$17.7K on $207K of sales), Bookcases (-$3.5K) and Supplies (-$1.2K). Paper, Copiers and Accessories earn strong margins (43%, 37% and 25%).",
+          "Discounts are a big driver (follow-up check on the Excel data): lines with no discount earn about a 29.5% margin, while lines discounted over 20% lose money, and over 40% lose heavily.",
+          "Shipping: Standard Class carries 59% of sales and averages a 5.01-day delay, against 2.18 days for First Class and 0.04 for Same Day. The dashboard shows 82% on-time and 18% late shipments, and the average delay improved slightly from 4.01 days in 2017 to 3.91 in 2019."
+        ]],
+        ["Outcome", "A reusable three-page report that answers the main sales, product and shipping questions in a few clicks, and points to where margin leaks (furniture lines, heavy discounting, the Central region). Because this is a sample dataset, I make no claims about real business results; the value here is the analysis and the way it is presented."],
+        ["Tools", "Power BI, Excel (data source)"]
+      ],
+      links: [["Download Power BI file (.pbix)", "./PBI/Superstore-Sales-Dashboard.pbix", true], ["GitHub profile", "https://github.com/Yousef-Abbassy"]]
     },
     m2: {
-      title: "[Project Title — SQL Database Analysis]",
-      desc: "Querying a relational database to answer specific business questions using SQL.",
-      sections: [
-        ["Overview", "A short introduction to the database and the business question behind it."],
-        ["The Challenge", "[Describe the real business/data problem this project addressed.]"],
-        ["My Approach", "[Explain how the database was explored and queried.]"],
-        ["Data Preparation", "[Explain any schema review, joins, or cleaning required.]"],
-        ["Analysis", "[Explain the key SQL queries and logic used.]"],
-        ["Visualization", "[Explain how query results were presented, if applicable.]"],
-        ["Key Insights", ["[Insight one]", "[Insight two]", "[Insight three]"]],
-        ["Outcome", "[Describe the real outcome or insight, without invented figures.]"],
-        ["Tools", "SQL, MySQL"]
+      title: "Global Country Comparison Dashboard",
+      desc: "An 8-page Power BI report built on country-level indicators from the CIA World Factbook (roughly a 2005 snapshot, as noted in the report footer).",
+      images: [
+        ["./pics/project-2-cover.png", "Page 1 — Cover Page"],
+        ["./pics/project-2-executive.png", "Page 2 — Executive Overview"],
+        ["./pics/project-2-health.png", "Page 3 — Health Analysis"],
+        ["./pics/project-2-economic.png", "Page 4 — Economic Performance"],
+        ["./pics/project-2-energy.png", "Page 5 — Energy Analysis"],
+        ["./pics/project-2-infrastructure.png", "Page 6 — Infrastructure & Connectivity"]
       ],
-      links: [["GitHub","[GitHub Project URL]"]]
+      sections: [
+        ["Overview", "A practice project that compares about 260 countries and territories side by side: economy, health, energy and infrastructure. The source data is a historical snapshot, so the findings describe the world as the data records it, not today's figures."],
+        ["The Challenge", "The source is one very wide Excel table with 44 indicators per country and a lot of blanks. It is hard to compare countries in that form, so I needed a report that a non-technical viewer can navigate, filter by region, GDP category or country, and drill into."],
+        ["My Approach", "I started with a cover page that links to five topic pages: Executive Overview, Health Analysis, Economic Performance, Energy Analysis and Infrastructure & Connectivity. Every topic page uses the same layout (a KPI strip, the same three slicers and supporting charts), so once you learn one page you can use them all. Two hidden pages add a Country Details drill-through and a tooltip."],
+        ["Data Preparation", "The workbook is a single sheet with 263 rows and 45 columns. The report is filtered to Entity Type = Country, so the analysis covers countries only and leaves out aggregate rows such as the European Union. The model also includes the grouping fields the slicers use: Region, GDP Category and Development Level. Many energy fields are blank for most countries (oil and gas reserves are missing for about 63% of rows), so those charts only cover countries that report a value."],
+        ["Analysis", "Each page leads with headline KPIs (for example total population, average life expectancy, trade balance, total oil and gas figures), followed by rankings such as the top 10 by GDP growth, the 5 lowest growth rates, the top 10 by inflation and the highest 10 oil producers. Ratios such as internet users and mobile phones per 100 people make countries of different sizes comparable."],
+        ["Visualization", "Bar charts for rankings, a donut for population by region, maps for population and oil reserves, a GDP-ranked table, and a health table with colour-coded infant mortality. Region, GDP category and country slicers apply on every page, and navigation buttons on each page move through the report."],
+        ["Key Insights", [
+          "Scale: about 6.45 billion people across 262 countries and territories, with Asia holding 56.65% of the population.",
+          "GDP is very concentrated: the average country has $243B of GDP but the median is only about $16B. The top 10 countries hold roughly 65% of the total and the United States alone about 21% ($11.75T), ahead of China ($7.26T) and Japan ($3.74T).",
+          "The fastest growth comes from unstable or small economies: Iraq (52%), Chad (38%) and Liberia (22%). Zimbabwe is at the other end, with -8.2% growth and the highest inflation in the data (133%).",
+          "Income and health move together: life expectancy and GDP per capita have a correlation of about 0.73 (on a log scale, across 224 countries).",
+          "HIV is the exception that breaks the pattern in southern Africa: adult prevalence is 38.8% in Swaziland, 37.3% in Botswana and 28.9% in Lesotho, and Botswana has the lowest life expectancy in the data (33.9 years, against 83.5 in Andorra).",
+          "Energy: Saudi Arabia (9.0M barrels a day), Russia (8.4M) and the United States (7.8M) lead oil production. Russia holds the most natural gas reserves (47T cubic metres), ahead of Iran (27T) and Qatar (14T).",
+          "Infrastructure gap: only 13 of 215 countries with data have more than 50 internet users per 100 people, and the United States has about 23% of all highway kilometres in the dataset.",
+          "Trade: world exports and imports both total $8.82T, and Germany ($177B) and Japan ($137B) post the largest trade surpluses."
+        ]],
+        ["Outcome", "An interactive report that lets someone compare countries across four themes, filter down to a region or a single country, and see where the extremes are. The data is old and incomplete in places, so I treat it as a snapshot for practice and do not draw conclusions about current conditions."],
+        ["Tools", "Power BI, Excel (data source)"]
+      ],
+      links: [["Download Power BI file (.pbix)", "./PBI/Global-Country-Dashboard.pbix", true], ["GitHub profile", "https://github.com/Yousef-Abbassy"]]
     },
     m3: {
-      title: "[Project Title — Python Data Cleaning & Analysis]",
-      desc: "Cleaning and exploring a messy dataset with Python and Pandas to prepare it for analysis.",
-      sections: [
-        ["Overview", "A short introduction to the dataset and its initial condition."],
-        ["The Challenge", "[Describe the real business/data problem this project addressed.]"],
-        ["My Approach", "[Explain the overall analysis process in Python.]"],
-        ["Data Preparation", "[Explain the cleaning steps performed with Pandas.]"],
-        ["Analysis", "[Explain the exploratory analysis and calculations performed.]"],
-        ["Visualization", "[Explain any charts produced with Python visualization libraries.]"],
-        ["Key Insights", ["[Insight one]", "[Insight two]", "[Insight three]"]],
-        ["Outcome", "[Describe the real outcome or insight, without invented figures.]"],
-        ["Tools", "Python, Pandas"]
+      title: "HR Analytics Dashboard (Tableau)",
+      desc: "A Tableau dashboard on a public sample HR dataset of 1,470 employees, built to understand employee attrition.",
+      images: [
+        ["./pics/project-3-hr-dashboard.png", "Tableau dashboard — HR Analytics"]
       ],
-      links: [["GitHub","[GitHub Project URL]"]]
-    },
-    m4: {
-      title: "[Project Title — Power BI KPI Dashboard]",
-      desc: "An interactive dashboard turning raw business data into KPIs stakeholders can act on.",
       sections: [
-        ["Overview", "A short introduction to the dataset and the dashboard's purpose."],
-        ["The Challenge", "[Describe the real business/data problem this project addressed.]"],
-        ["My Approach", "[Explain the process of designing the dashboard.]"],
-        ["Data Preparation", "[Explain how data was modeled and prepared in Power BI.]"],
-        ["Analysis", "[Explain the key metrics and DAX calculations used.]"],
-        ["Visualization", "[Explain the dashboard layout and visuals created.]"],
-        ["Key Insights", ["[Insight one]", "[Insight two]", "[Insight three]"]],
-        ["Outcome", "[Describe the real outcome or insight, without invented figures.]"],
-        ["Tools", "Power BI"]
+        ["Overview", "A practice project on a public sample HR dataset (1,470 employees, 39 columns), not data from a real company. The dashboard answers one question: who is leaving, and where? It is built in Tableau and can be filtered by department and education field."],
+        ["The Challenge", "HR data is a long table of employee records. Looking at it row by row tells you nothing about patterns, so I needed a view that shows attrition by department, age, gender, education field and job satisfaction at a glance."],
+        ["My Approach", "I built one worksheet per question (KPIs, attrition by department, by gender, by education field, by age group, employees by age and job satisfaction by role) and combined them into a single dashboard with department and education-field filters at the top."],
+        ["Data Preparation", "The data comes from an Excel sheet. It already included helper columns such as an age band, an attrition label and a current-employee flag. In Tableau I added calculated fields: Attrition Count (1 when Attrition is Yes, otherwise 0), Attrition Rate (attrition count divided by employee count), Active Employees (employees minus leavers), and a Bin Size parameter that lets the viewer change the width of the age bins."],
+        ["Analysis", "The KPI strip shows headcount, leavers, attrition rate, active employees and average age. I then looked at each breakdown as both a count and a share of all leavers, and checked the results against the Excel data. I also ran a follow-up analysis on attrition rates per group, which the dashboard does not show yet."],
+        ["Visualization", "A KPI strip on top, a pie chart for attrition by department, a histogram of employees by age with an adjustable bin size, a heat-table of job satisfaction ratings (1 to 4) by job role, a bar chart of attrition by education field, and donut charts of attrition by age band split by gender. A dark theme with a consistent colour palette keeps it readable."],
+        ["Key Insights", [
+          "Headline: 237 of 1,470 employees left, an attrition rate of 16.12%, with an average age of 37.",
+          "Counts can mislead: R&D has the most leavers (133, or 56% of the total) simply because it is the biggest department. By rate, Sales (20.6%) and HR (19.0%) lose more people than R&D (13.8%).",
+          "Young employees leave the most: 39% of employees under 25 left (38 of 97), against about 10% for ages 35 to 54. The 25-34 group makes up 47% of all leavers.",
+          "Overtime is the strongest signal in the data: 30.5% of employees who work overtime left, against 10.4% of those who don't. They are 28% of the workforce but 54% of leavers.",
+          "Single employees who work overtime left at about 50% (65 of 131), compared with about 13% for everyone else.",
+          "Sales Representatives have the highest attrition by role (39.8%, 33 of 83) and Laboratory Technicians follow (23.9%). Research Directors (2.5%) and Managers (4.9%) rarely leave.",
+          "Early tenure and entry level matter: 34.9% of employees with a year or less at the company left, falling to 8.1% for those with more than 10 years. Job Level 1 has a 26.3% attrition rate and accounts for 60% of all leavers.",
+          "Leavers earned less: median monthly income was 3,202 for leavers against 5,204 for those who stayed. Employees rating job satisfaction as 1 left at 22.8%, against 11.3% for a rating of 4.",
+          "Gender gap is small: men left at 17.0% and women at 14.8%, even though men account for 63% of leavers because they are 60% of staff."
+        ]],
+        ["Outcome", "A single dashboard where an HR manager can see attrition patterns and filter them by department and education field. The data points to where retention work could focus: new hires, entry-level roles, sales roles and teams that work a lot of overtime. This is a sample dataset, so I make no claims about real business results."],
+        ["Tools", "Tableau, Excel (data source)"]
       ],
-      links: [["GitHub","[GitHub Project URL]"], ["Live Dashboard","[Live Dashboard URL]"]]
+      links: [["Download Tableau workbook (.twbx)", "./TB/HR-Analytics-Dashboard.twbx", true], ["GitHub profile", "https://github.com/Yousef-Abbassy"]]
     }
   };
 
@@ -2017,6 +1530,23 @@ section,
     csTitle.textContent = data.title;
     csDesc.textContent = data.desc;
     csBody.innerHTML = '';
+    if(data.images){
+      const shots = document.createElement('div');
+      shots.className = 'cs-shots';
+      data.images.forEach(function(im){
+        const fig = document.createElement('figure');
+        const a = document.createElement('a');
+        a.href = im[0]; a.target = '_blank'; a.rel = 'noopener';
+        const img = document.createElement('img');
+        img.src = im[0]; img.alt = im[1]; img.loading = 'lazy';
+        a.appendChild(img);
+        const cap = document.createElement('figcaption');
+        cap.textContent = im[1];
+        fig.appendChild(a); fig.appendChild(cap);
+        shots.appendChild(fig);
+      });
+      csBody.appendChild(shots);
+    }
     data.sections.forEach(function(sec){
       const wrap = document.createElement('div');
       wrap.className = 'cs-section';
@@ -2050,6 +1580,7 @@ section,
       a.href = l[1];
       a.textContent = l[0];
       a.className = 'btn btn-ghost-dark btn-sm';
+      if(l[2]){ a.setAttribute('download',''); } else if(/^https?:/.test(l[1])){ a.target = '_blank'; a.rel = 'noopener noreferrer'; }
       linkRow.appendChild(a);
     });
     linksWrap.appendChild(linkRow);
